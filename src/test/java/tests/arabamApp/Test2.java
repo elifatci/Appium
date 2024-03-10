@@ -21,7 +21,7 @@ public class Test2 {
     AndroidDriver<AndroidElement> driver;
 
     @Test
-    public void test01() throws MalformedURLException {
+    public void test01() throws MalformedURLException, InterruptedException {
         DesiredCapabilities capabilities=new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,"10.0");
@@ -42,12 +42,14 @@ public class Test2 {
         //atla yazısına tıklanır
         driver.findElementById("com.dogan.arabam:id/textViewSkip").click();
         //ekrandaki 5. resmi görene kadar ilerlenir
+
+        Thread.sleep(3000);
         TouchAction action=new TouchAction<>(driver);
 
         for (int i = 0; i < 5; i++) {
-            action.press(PointOption.point(972,460))
+            action.press(PointOption.point(1312,653))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-                    .moveTo(PointOption.point(55,460)).release().perform();
+                    .moveTo(PointOption.point(131,653)).release().perform();
         }
         //5. resmin görünür oldugu dogrulanır
         Assert.assertTrue(driver.findElementById("com.dogan.arabam:id/ivSlider").isDisplayed());
@@ -56,11 +58,17 @@ public class Test2 {
         driver.findElementByXPath("(//android.widget.ImageView[@resource-id=\"com.dogan.arabam:id/imageView\"])[5]").click();
 
         //Dizel fiyatının 40,62 TL oldugu dogrulanır
+
+        for (int i = 0; i < 3; i++) {
+            action.press(PointOption.point(1116,1140))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                    .moveTo(PointOption.point(142,1140)).release().perform();
+        }
         String actualPrice=driver.findElementById("com.dogan.arabam:id/textViewPriceWithoutCurrency").getText();
 
-        int actPr=Integer.parseInt(actualPrice.replaceAll("TL",""));
+        double actPr= Double.parseDouble(actualPrice.replaceAll("TL","").replaceAll(",","."));
 
-        Assert.assertEquals(actPr,"40,62");
+        Assert.assertEquals(actPr,"40.62");
 
 
     }
