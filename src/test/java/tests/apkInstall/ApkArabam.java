@@ -17,8 +17,8 @@ public class ApkArabam {
     @Test
     public void apkInstall() throws MalformedURLException {
         DesiredCapabilities capabilities=new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel 2");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,"10.0");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Hometect 8MT");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,"6.0");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,"Android");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
         capabilities.setCapability(MobileCapabilityType.APP,"C:\\Users\\Elif\\IdeaProjects\\Appium\\Apps\\arabam.com_5.1.6_Apkpure.apk");
@@ -28,6 +28,6 @@ public class ApkArabam {
          */
 
         driver=new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 }
