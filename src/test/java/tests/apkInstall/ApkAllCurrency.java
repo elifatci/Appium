@@ -17,8 +17,8 @@ public class ApkAllCurrency {
     @Test
     public void apkInstall() throws MalformedURLException {
         DesiredCapabilities capabilities=new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"8MT");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,"6.0");
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"Pixel 2");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,"10.0");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,"Android");
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME,"UiAutomator2");
         capabilities.setCapability(MobileCapabilityType.APP,"C:\\Users\\Elif\\IdeaProjects\\Appium\\Apps\\all-currency-converter-3-9-0 (1).apk");
